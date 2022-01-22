@@ -89,6 +89,14 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
+# set default editor
+if command -v nvim &> /dev/null
+then
+    alias vim="nvim"
+    export EDITOR='nvim'
+    alias nvimo="nvim -u NORC  --noplugin"
+    alias vimo="/usr/bin/vim"
+fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
