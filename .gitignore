@@ -1,0 +1,8 @@
+# ignore everythings
+*
+
+# except dot files 
+!.gitignore
+!.config/
+!.bashrc
+!.zshrc
