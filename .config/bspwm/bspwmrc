@@ -19,6 +19,6 @@ bspc config focus_follows_pointer true
 # autostart up applications 
 ~/.config/polybar/launch.sh &
 picom & 
-feh --bg-fill ~/Pictures/wall/neon.png &
+feh --bg-fill /usr/share/pixmaps/neon.png &
 xrdb merge ~/.Xresources &
 sxhkd 
