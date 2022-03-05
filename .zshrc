@@ -1,95 +1,97 @@
-if [ "$TMUX" = "" ]; then tmux; fi
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+if [[ ! -f $HOME/.zi/bin/zi.zsh ]]; then
+  print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
+  command mkdir -p "$HOME/.zi" && command chmod g-rwX "$HOME/.zi"
+  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
+    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+    print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+source "$HOME/.zi/bin/zi.zsh"
+autoload -Uz _zi
+(( ${+_comps} )) && _comps[zi]=_zi
+# examples here -> https://z-shell.pages.dev/docs/gallery/collection
+zicompinit # <- https://z-shell.pages.dev/docs/gallery/collection#minimal
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+zi light-mode for \
+  z-shell/z-a-meta-plugins \
+  @annexes @ext-git 
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+#####################
+# PROMPT            #
+#####################
+zi lucid for \
+as"command" from"gh-r" atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' atload'eval "$(starship init zsh)"' bpick'*unknown-linux-gnu*' \
+  starship/starship \
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+##########################
+# OMZ Libs and Plugins   #
+##########################
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# IMPORTANT:
+# Ohmyzsh plugins and libs are loaded first as some these sets some defaults which are required later on.
+# Otherwise something will look messed up
+# ie. some settings help zsh-autosuggestions to clear after tab completion
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+setopt promptsubst
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+zi lucid for \
+OMZL::history.zsh 
+zi wait lucid for \
+OMZL::clipboard.zsh \
+OMZL::compfix.zsh \
+OMZL::completion.zsh \
+OMZL::correction.zsh  \
+  atload"\
+  alias ..='cd ..' \
+  alias ...='cd ../..' \
+  alias ....='cd ../../..' \
+  alias .....='cd ../../../..'" \
+OMZL::directories.zsh \
+OMZL::git.zsh \
+OMZL::grep.zsh \
+OMZL::spectrum.zsh \
+OMZL::termsupport.zsh \
+OMZP::git \
+OMZP::urltools \
+OMZP::extract \
+OMZP::encode64 \
+OMZP::helm \
+OMZP::kubectl \
+OMZP::minikube 
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+zi snippet OMZ::lib/key-bindings.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+zi ice as"completion"
+zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+zi ice as"completion"
+zi snippet https://github.com/docker/compose/tree/master/contrib/completion/zsh/_docker-compose
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+zi snippet OMZ::lib/theme-and-appearance.zsh
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+zi load z-shell/zui
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+if [[ `uname` == "Darwin" ]]; then
+    eval "$(zoxide init zsh)"
+    zi snippet OMZP::fzf/fzf.plugin.zsh
+else
+    zi ice wait"2" as"command" from"gh-r" lucid \
+        mv"zoxide*/zoxide -> zoxide" \
+        atclone"./zoxide init zsh > init.zsh" \
+        atpull"%atclone" src"init.zsh" nocompile'!'
+    zi light ajeetdsouza/zoxide
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions tmux kubectl)
+    zi light-mode for \
+        z-shell/z-a-meta-plugins \
+        @console-tools
 
-source $ZSH/oh-my-zsh.sh
+    zi ice as"command" from"gh-r" mv"delta* -> delta" pick"delta/delta"
+    zi light dandavison/delta
+fi
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# set default editor
 if command -v nvim &> /dev/null
 then
     alias vim="nvim"
@@ -97,15 +99,93 @@ then
     alias nvimo="nvim -u NORC  --noplugin"
     alias vimo="/usr/bin/vim"
 fi
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-eval $(thefuck --alias)
+export SDKMAN_DIR="$HOME/.sdkman"
+zi ice wait lucid as"program" pick"$HOME/.sdkman/bin/sdk" id-as'sdkman' run-atpull \
+    atclone"wget https://get.sdkman.io -O $HOME/.sdkman/scr.sh; bash $HOME/.sdkman/scr.sh" \
+    atpull"sdk selfupdate" \
+    atinit"source $HOME/.sdkman/bin/sdkman-init.sh"
+zi light z-shell/null
+
+zi ice lucid wait as'completion' blockf has'cargo'
+zi snippet https://github.com/rust-lang/cargo/blob/master/src/etc/_cargo
+
+zi ice lucid wait as'completion' blockf has'rg'
+zi snippet https://github.com/BurntSushi/ripgrep/blob/master/complete/_rg
+
+zi ice lucid wait as'completion' blockf has'youtube-dl' mv'youtube-dl.zsh -> _youtube-dl'
+zi snippet https://github.com/ytdl-org/youtube-dl/blob/master/youtube-dl.plugin.zsh
+
+# zi ice pick"async.zsh" src"pure.zsh"
+# zi light sindresorhus/pure
+
+zi wait lucid for \
+ atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    z-shell/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
+
+zi ice wait lucid
+zi snippet OMZP::nvm
+
+zi ice wait lucid
+zi light kazhala/dotbare
+
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+zi ice wait lucid
+zi snippet "OMZ::lib/completion.zsh"
+
+zi ice wait lucid
+zi light "MichaelAquilina/zsh-you-should-use"
+
+zi ice lucid wait has'fzf'
+zi light Aloxaf/fzf-tab
+
+
+
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.jenv/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$HOME/bin"
+
+if [[ `uname` == "Darwin" ]]; then
+    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+    source ~/.iterm2_shell_integration.zsh
+    export HOMEBREW_NO_INSTALL_CLEANUP=1
+    eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+    export PATH="/usr/local/sbin:$PATH"
+    export PATH="/usr/local/opt/icu4c/bin:$PATH"
+    export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+else
+    export PATH=$PATH:/usr/local/go/bin
+    alias open=xdg-open
+    alias idea=$HOME/idea/idea-IC-203.8084.24/bin/idea.sh
+    # Generated for envman. Do not edit.
+    [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+fi
+
+
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+--color=dark
+--color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+--color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
+'
+export BAT_THEME="Dracula"
+
+export FZF_DEFAULT_COMMAND='fd --type file'
+
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+
+if command -v exa &> /dev/null
+then
+    alias ls=exa
+    alias la=ll -a
+fi
+
