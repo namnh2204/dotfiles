@@ -189,3 +189,4 @@ then
     alias la=ll -a
 fi
 
+if [ "$TMUX" = "" ] && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then tmux new -As0; fi
