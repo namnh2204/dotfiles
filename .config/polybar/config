@@ -61,7 +61,7 @@ wm-restack = bspwm
 
 modules-left = round-left bspwm round-right empty-space round-left polywins round-right
 modules-center = round-left xwindow round-right
-modules-right = alsa network round-left cpu round-right wlan mem round-left popup-calendar round-right powermenu
+modules-right = pulseaudio network round-left cpu round-right wlan mem round-left popup-calendar round-right powermenu
 font-0 = JetBrainsMono Nerd Font:style=Bold:pixelsize=9;3
 font-1 = JetBrainsMono Nerd Font:size=12;4
 font-2 = Material Design Icons:style=Regular:size=10;3
@@ -148,8 +148,13 @@ label-urgent-background = #2a2e36
 label-urgent-padding = 1
 
 
-[module/alsa]
-type = internal/alsa
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `paclt list sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_24_00.3.analog-stereo
+
 format-volume = <label-volume> <bar-volume>
 label-volume = " "  
 label-volume-foreground = ${colors.foreground}
@@ -177,7 +182,6 @@ bar-volume-empty = ━
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = #565c64
 format-volume-padding = 1
-
 
 [module/popup-calendar]
 type = custom/script
@@ -215,7 +219,7 @@ interval = 3.0
 accumulate-stats = true
 unknown-as-up = true
 
-label-connected = %{F#A3BE8C}
+label-connected = %{F#A3BE8C}
 label-disconnected = %{F#ff9b93}
 label-connected-font = 2
 label-disconnected-font = 2
