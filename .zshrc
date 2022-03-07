@@ -52,6 +52,7 @@ OMZL::git.zsh \
 OMZL::grep.zsh \
 OMZL::spectrum.zsh \
 OMZL::termsupport.zsh \
+OMZP::vi-mode \
 OMZP::git \
 OMZP::urltools \
 OMZP::extract \
