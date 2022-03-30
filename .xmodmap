@@ -7,7 +7,6 @@ keysym bracketleft = bracketleft braceleft Home
 keysym bracketright = bracketright braceright End
 keysym i = i I Insert
 keysym d = d D Delete
-keysym Escape = grave asciitilde Escape
 
 keysym 1 = 1 exclam F1
 keysym 2 = 2 at F2
@@ -18,6 +17,6 @@ keysym 6 = 6 asciicircum F6
 keysym 7 = 7 ampersand F7
 keysym 8 = 8 asterisk F8
 keysym 9 = 9 parenleft F9
-keysym 0 = 0 parenleft F10
+keysym 0 = 0 parenright F10
 keysym minus = minus underscore F11
 keysym equal = equal plus F12
