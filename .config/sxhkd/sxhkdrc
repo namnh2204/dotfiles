@@ -15,8 +15,18 @@ super + b
 super + e
     pcmanfm
 
-super + z
-  zoom 
+super + m
+    google-chat-electron
+
+super + i
+    $HOME/programs/idea-IU-213.6777.52/bin/idea.sh
+    
+
+super + p
+    $HOME/programs/pycharm-2021.3.2/bin/pycharm.sh 
+
+super + v
+    code
 
 # lock screen
 ctrl + shift + l
