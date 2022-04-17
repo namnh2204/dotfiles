@@ -190,7 +190,7 @@ then
     alias la=ll -a
 fi
 
-if [ "$TMUX" = "" ] && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then tmux new -As0; fi
+if [ "$TMUX" = "" ] && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ] && [ "$TERM_PROGRAM" != "vscode" ]; then tmux new -As0; fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/namnh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/namnh/google-cloud-sdk/path.zsh.inc'; fi
