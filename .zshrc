@@ -191,3 +191,9 @@ then
 fi
 
 if [ "$TMUX" = "" ] && [ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]; then tmux new -As0; fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/namnh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/namnh/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/namnh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/namnh/google-cloud-sdk/completion.zsh.inc'; fi
