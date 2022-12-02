@@ -173,7 +173,7 @@ generate_window_list() {
     "icon")
       case "$cls" in
       Alacritty) w_name='' ;;
-      Chromium-browser) w_name='' ;;
+      Google-chrome) w_name='' ;;
       TelegramDesktop) w_name='' ;;
       Pcmanfm) w_name='' ;;
       SimpleScreenRecorder) w_name='' ;;

@@ -10,13 +10,13 @@ super + c
     rofi -show drun
 
 super + b
-    firefox
+    google-chrome-stable --profile-directory=Default
 
 super + e
     pcmanfm
 
 super + m
-    google-chat-electron
+    google-chrome-stable --profile-directory='Profile 1' --app_id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
 
 super + i
     $HOME/programs/idea-IU-213.6777.52/bin/idea.sh
@@ -35,7 +35,7 @@ ctrl + shift + l
 # reload config (bspwmrc and sxhkdrc)  # 
 
 super + shift + r
-	pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd
 
 super + shift + e
     bspc wm -r
