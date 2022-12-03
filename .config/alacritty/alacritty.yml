@@ -69,7 +69,7 @@ window:
   #   - SimpleFullscreen
   startup_mode: Maximized
 
-  opacity: 0.8
+  opacity: 0.95
 
 colors:
   # Default colors

@@ -52,17 +52,19 @@ OMZL::git.zsh \
 OMZL::grep.zsh \
 OMZL::spectrum.zsh \
 OMZL::termsupport.zsh \
-OMZP::vi-mode \
 OMZP::git \
 OMZP::urltools \
 OMZP::extract \
 OMZP::encode64 \
 OMZP::helm \
-OMZP::kubectl \
-OMZP::minikube 
+OMZP::kubectl
+
+zi ice depth=1
+zi light jeffreytse/zsh-vi-mode
 
 zi snippet OMZ::lib/key-bindings.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+zi ice lucid wait
+zi snippet OMZP::fzf
 
 zi ice as"completion"
 zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
@@ -114,9 +116,6 @@ zi snippet https://github.com/rust-lang/cargo/blob/master/src/etc/_cargo
 zi ice lucid wait as'completion' blockf has'rg'
 zi snippet https://github.com/BurntSushi/ripgrep/blob/master/complete/_rg
 
-zi ice lucid wait as'completion' blockf has'youtube-dl' mv'youtube-dl.zsh -> _youtube-dl'
-zi snippet https://github.com/ytdl-org/youtube-dl/blob/master/youtube-dl.plugin.zsh
-
 # zi ice pick"async.zsh" src"pure.zsh"
 # zi light sindresorhus/pure
 
@@ -146,7 +145,6 @@ zi ice lucid wait has'fzf'
 zi light Aloxaf/fzf-tab
 
 
-
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.jenv/bin:$PATH"
@@ -164,7 +162,6 @@ if [[ `uname` == "Darwin" ]]; then
 else
     export PATH=$PATH:/usr/local/go/bin
     alias open=xdg-open
-    alias idea=$HOME/idea/idea-IC-203.8084.24/bin/idea.sh
     # Generated for envman. Do not edit.
     [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
@@ -197,3 +194,4 @@ if [ -f '/home/namnh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/namnh/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/namnh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/namnh/google-cloud-sdk/completion.zsh.inc'; fi
+
