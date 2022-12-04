@@ -3,7 +3,7 @@
 xmodmap .xmodmap-sid & # remove this 
 
 #bspc monitor -d Home Web Work Files Mails Misc
-bspc monitor -d 1 2 3 4 5 6
+bspc monitor -d 1 2 3 4 5
 
 bspc config border_width         3
 bspc config borderless_monocle   false

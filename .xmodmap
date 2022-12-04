@@ -29,3 +29,6 @@ keycode 62 = Escape F13 Escape
 clear Mod1
 add Mod1 = Alt_L
 keycode 108 = F12 F12 F12
+
+keycode 224 = XF86MonBrightnessDown NoSymbol XF86MonBrightnessDown
+keycode 225 = XF86MonBrightnessUp NoSymbol XF86MonBrightnessUp

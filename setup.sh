@@ -14,7 +14,7 @@ install_yay_aur_helper() {
 
 setup_dotfiles() {
     dotfilePath=$(pwd)
-    ln -sfn $dotfilePath/.config/{alacritty,nvim,bspwm,picom,polybar,rofi,sxhkd} $HOME/.config
+    ln -sfn $dotfilePath/.config/{alacritty,dunst,nvim,bspwm,picom,polybar,rofi,sxhkd} $HOME/.config
     ln -sfn $dotfilePath/.tmux.conf $HOME/.tmux.conf
     ln -sfn $dotfilePath/.fzf.zsh $HOME/.fzf.zsh
     ln -sfn $dotfilePath/.zshrc $HOME/.zshrc

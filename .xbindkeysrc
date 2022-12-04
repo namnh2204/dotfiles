@@ -43,10 +43,11 @@
 #  c:108
 #  Alt_R
 
-"xset r off; xdotool keyup --window 0 F17 type --clearmodifiers --window 0 'M5m4m3m2m1!@'; xset r on" 
-  F17
-"xset r off; xdotool keyup --window 0 F18 type --clearmodifiers --window 0 'M5m4m3m2m1!@'; xset r on" 
-  F18
+# set backlight
+"light -U 5"
+  XF86MonBrightnessDown
+"light -A 5"
+  XF86MonBrightnessUp
 
 # set directly keycode (here control + f with my keyboard)
 #"xterm"
