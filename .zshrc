@@ -52,15 +52,13 @@ OMZL::git.zsh \
 OMZL::grep.zsh \
 OMZL::spectrum.zsh \
 OMZL::termsupport.zsh \
+OMZP::vi-mode \
 OMZP::git \
 OMZP::urltools \
 OMZP::extract \
 OMZP::encode64 \
 OMZP::helm \
 OMZP::kubectl
-
-zi ice depth=1
-zi light jeffreytse/zsh-vi-mode
 
 zi snippet OMZ::lib/key-bindings.zsh
 zi ice lucid wait
