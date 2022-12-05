@@ -53,6 +53,8 @@ OMZL::grep.zsh \
 OMZL::spectrum.zsh \
 OMZL::termsupport.zsh \
 OMZP::vi-mode \
+  atload"\
+  export VI_MODE_SET_CURSOR=true" \
 OMZP::git \
 OMZP::urltools \
 OMZP::extract \

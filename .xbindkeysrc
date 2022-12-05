@@ -43,12 +43,6 @@
 #  c:108
 #  Alt_R
 
-# set backlight
-"light -U 5"
-  XF86MonBrightnessDown
-"light -A 5"
-  XF86MonBrightnessUp
-
 # set directly keycode (here control + f with my keyboard)
 #"xterm"
 #  c:41 + m:0x4
