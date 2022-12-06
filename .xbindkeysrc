@@ -43,6 +43,9 @@
 #  c:108
 #  Alt_R
 
+# "xset r off; xdotool keyup --window 0 semicolon key --clearmodifiers --window 0 Control_L+grave; xset r on" 
+#  c:66 + c:47
+
 # set directly keycode (here control + f with my keyboard)
 #"xterm"
 #  c:41 + m:0x4

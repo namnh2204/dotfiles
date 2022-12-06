@@ -16,7 +16,7 @@ super + e
     pcmanfm
 
 super + m
-    google-chrome-stable --profile-directory='Profile 1' --app_id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
+    google-chrome-stable --profile-directory='Profile 1' --app --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
 
 super + i
     $HOME/programs/idea-IU-213.6777.52/bin/idea.sh
