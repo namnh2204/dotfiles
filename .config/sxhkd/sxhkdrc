@@ -1,58 +1,54 @@
 #  ------ programs  -------- # 
 
 super + Return
-    alacritty
+  alacritty
 
 super + t
-    QT_IM_MODULE=ibus telegram-desktop
+  QT_IM_MODULE=ibus telegram-desktop
 
 super + c
-    rofi -show drun
+  rofi -show drun
 
 super + b
-    google-chrome-stable --profile-directory=Default
+  google-chrome-stable --profile-directory=Default
+
+super + n
+  google-chrome-stable --profile-directory='Profile 1'
 
 super + e
-    pcmanfm
+  pcmanfm
 
 super + m
-    google-chrome-stable --profile-directory='Profile 1' --app --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
-
-super + i
-    $HOME/programs/idea-IU-213.6777.52/bin/idea.sh
-    
-
-super + p
-    $HOME/programs/pycharm-2021.3.2/bin/pycharm.sh 
+  google-chrome-stable --profile-directory='Profile 1' --app --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
 
 super + v
-    code
+  code
 
 # lock screen
 ctrl + shift + l
-    light-locker-command -l
+  light-locker-command -l
 
 # reload config (bspwmrc and sxhkdrc)  # 
 
 super + shift + r
-    pkill -USR1 -x sxhkd
+  pkill -USR1 -x sxhkd
 
 super + shift + e
-    bspc wm -r
+  bspc wm -r
 
 #  ------ brightness  -------- # 
 
 XF86MonBrightnessUp
-    xbacklight -inc 10
+  xbacklight -inc 10
 
 XF86MonBrightnessDown
-    xbacklight -dec 10
+  xbacklight -dec 10
 
 # ------ Volume control ------ #
 XF86Audio{RaiseVolume,LowerVolume}
-    pactl set-sink-volume @DEFAULT_SINK@ {+5,-5}%
+  pactl set-sink-volume @DEFAULT_SINK@ {+5,-5}%
 
-#  ------------ bspwm hotkeys ------------ # 
+#------------ bspwm hotkeys ------------ # 
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -151,31 +147,32 @@ super + {Left,Down,Up,Right}
 
 
 super + m
-    bspc desktop -l next  # idk what this does 
+  bspc desktop -l next  # idk what this does 
 
+super + {_,shift + }{a,b,c,d,e,0}
+  bspc {desktop -f,node -d} '^{1-5,5}' --follow 
 
 # -------------- take screenshots ------------- #
 
 #fullscreen screenshot save
 super + Print
-    maim "/home/$USER/Pictures/$(date).png"
+  maim "/home/$USER/Pictures/$(date).png"
 
 #cropped save
 super + shift + x
-    maim --select "/home/$USER/Pictures/$(date).png"
+  maim --select "/home/$USER/Pictures/$(date).png"
 
 #  clipboard fullscreen
 super + u
-    maim | xclip -selection clipboard -t image/png
+  maim | xclip -selection clipboard -t image/png
 
 # clipboard cropped
 super + shift + u
-    maim --select | xclip -selection clipboard -t image/png
+  maim --select | xclip -selection clipboard -t image/png
 
+super + r
+  tdrop -ma -x '25%' -y '5%' -w '50%' -h '30%' -p 'bspc rule -a St -o state=floating' st -T ranger -e ranger 
 
+super + shift + p
+  xdotool keyup --window 0 p key --clearmodifiers --window 0 type --clearmodifiers 'M5m4m3m2m1!@'
 
-super + {_,shift + }{a,b,c,d,e,0}
-    bspc {desktop -f,node -d} '^{1-5,5}' --follow 
-
-super  + r
-    tdrop -ma -x '25%' -y '5%' -w '50%' -h '30%' -p 'bspc rule -a St -o state=floating' st -T ranger -e ranger 

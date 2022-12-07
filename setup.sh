@@ -25,7 +25,6 @@ setup_dotfiles() {
 
 setup_screen() {
     ln -sfn $dotfilePath/wall/neon.png /usr/share/pixmaps/neon.png
-    ln -sfn $dotfilePath/{lightdm} /etc
 }
 
 install_sdkman() {
