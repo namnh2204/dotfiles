@@ -24,10 +24,9 @@ setup_dotfiles() {
     ln -sfn $dotfilePath/.xprofile $HOME/.xprofile
     ln -sfn $dotfilePath/.xmodmap $HOME/.xmodmap
     ln -sfn $dotfilePath/.xbindkeysrc $HOME/.xbindkeysrc
-}
 
-setup_screen() {
-    ln -sfn $dotfilePath/wall/neon.png /usr/share/pixmaps/neon.png
+    # wallpaper
+    ln -sfn $dotfilePath/Pictures $HOME/Pictures
 }
 
 install_sdkman() {

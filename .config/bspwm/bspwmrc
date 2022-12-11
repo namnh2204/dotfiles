@@ -19,6 +19,5 @@ bspc config normal_border_color "#353b45"
 # autostart up applications 
 ~/.config/polybar/launch.sh &
 picom & 
-feh --bg-fill /usr/share/pixmaps/neon.png &
-xrdb merge ~/.Xresources &
+feh --bg-fill ~/Pictures/Wallpapers/forest.jpg
 sxhkd 
