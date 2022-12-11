@@ -69,9 +69,10 @@ fix_wifi_card_thinkbook() {
     ln -sfn $dotfilePath/thinkbook/wifi-fix/50-rtw89.conf /etc/modprobe.d/50-rtw89.conf
 }
 
-install_yay_aur_helper
-setup_dotfiles
-install_sdkman
-install_tmux_plugin
-install_bluetooth_driver
+#install_yay_aur_helper
+#setup_dotfiles
+#install_sdkman
+#install_tmux_plugin
+#install_bluetooth_driver
 install_wifi_driver
+#zsh

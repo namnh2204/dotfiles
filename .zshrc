@@ -173,7 +173,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=fg:-1,bg:-1,hl:#e5c07b,fg+:#98c379,bg+:-1,hl+:#ffaf5f
 --color=info:#61afef,prompt:#e06c75,pointer:#98c379,marker:#ff87d7,spinner:#ff87d7
 '
-export BAT_THEME="Dracula"
+export BAT_THEME="TwoDark"
 
 export FZF_DEFAULT_COMMAND='fd --type file'
 
