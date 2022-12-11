@@ -17,11 +17,12 @@ setup_dotfiles() {
     ln -sfn $dotfilePath/.config/{alacritty,dunst,nvim,bspwm,picom,polybar,rofi,sxhkd} $HOME/.config
     ln -sfn $dotfilePath/.tmux.conf $HOME/.tmux.conf
     ln -sfn $dotfilePath/.fzf.zsh $HOME/.fzf.zsh
+    ln -sfn $dotfilePath/.bashrc $HOME/.bashrc
     ln -sfn $dotfilePath/.zshrc $HOME/.zshrc
     ln -sfn $dotfilePath/.xinitrc $HOME/.xinitrc
     ln -sfn $dotfilePath/.Xresources $HOME/.Xresources 
-    ln -sfn $dotfilePath/.bashrc $HOME/.bashrc
     ln -sfn $dotfilePath/.xprofile $HOME/.xprofile
+    ln -sfn $dotfilePath/.xmodmap $HOME/.xmodmap
     ln -sfn $dotfilePath/.xbindkeysrc $HOME/.xbindkeysrc
 }
 
