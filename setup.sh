@@ -54,14 +54,14 @@ install_wifi_driver() {
     cd rtw89-dkms-git
     makepkg -sri
     cd ../
-    rm -r rtw89-dkms-git
+    rm -rf rtw89-dkms-git
 
     git clone https://github.com/lwfinger/rtw89.git
     cd rtw89
     make
     sudo make install
     cd ../
-    rm -r rtw89
+    rm -rf rtw89
     sudo modprobe -v rtw_8852be          #This loads the module
 }
 
