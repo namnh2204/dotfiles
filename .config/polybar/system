@@ -27,7 +27,7 @@ network_interface = enp2s0
 wlan_interface = wlo1
 sink = alsa_output.pci-0000_34_00.6.HiFi__hw_Generic_1__sink
 backlight_card = amdgpu_bl0
-monitor_1 = eDP
+monitor_1 = eDP-1
 monitor_2 = HDMI-A-0
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
