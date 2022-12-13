@@ -24,6 +24,7 @@ setup_dotfiles() {
     ln -sfn $dotfilePath/.xprofile $HOME/.xprofile
     ln -sfn $dotfilePath/.xmodmap $HOME/.xmodmap
     ln -sfn $dotfilePath/.xbindkeysrc $HOME/.xbindkeysrc
+    ln -sfn $dotfilePath/hdmi-cable-change.sh $HOME/hdmi-cable-change.sh
 
     # wallpaper
     ln -sfn $dotfilePath/Pictures $HOME/Pictures
