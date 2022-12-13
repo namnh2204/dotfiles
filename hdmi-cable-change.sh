@@ -1,9 +1,9 @@
 # !bin/sh
 set -x
-intern=eDP-1
-extern=HDMI-1
-if [[ $(xrandr --query | grep 'HDMI-1 connected') ]]; then
-  xrandr --output $intern --auto --primary --output $extern --auto --right-of eDP-1
+intern=eDP
+extern=HDMI-A-0
+if [[ $(xrandr --query | grep "$extern connected") ]]; then
+  xrandr --output $intern --auto --primary --output $extern --scale 1.75x1.75 --auto --right-of $intern
   bspc monitor $intern -d 1 2 3
   bspc monitor $extern -d 4 5 6
   feh --bg-fill ~/Pictures/Wallpapers/forest.jpg
