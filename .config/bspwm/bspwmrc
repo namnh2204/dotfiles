@@ -2,8 +2,13 @@
 
 xmodmap .xmodmap-sid & # remove this 
 
-#bspc monitor -d Home Web Work Files Mails Misc
-bspc monitor -d 1 2 3 4 5
+if [[ $(xrandr --query | grep 'HDMI-1 connected') ]]; then
+  xrandr --output eDP-1 --primary --mode 2880x1880 --rotate normal --output HDMI-1 --mode 1920x1080 --rotate normal --right-of eDP-1
+  bspc monitor eDP-1 -d 1 2 3
+  bspc monitor HDMI-1 -d 4 5 6
+else
+  bspc monitor -d 1 2 3 4 5
+fi
 
 bspc config border_width         3
 bspc config borderless_monocle   false
@@ -18,6 +23,6 @@ bspc config normal_border_color "#353b45"
 
 # autostart up applications 
 ~/.config/polybar/launch.sh &
-picom & 
 feh --bg-fill ~/Pictures/Wallpapers/forest.jpg
+picom & 
 sxhkd 

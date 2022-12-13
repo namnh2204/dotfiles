@@ -11,6 +11,6 @@ echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log /tmp/polybar3.log /tmp/p
 #polybar black >>/tmp/polybar1.log 2>&1 & disown
 polybar bar1 -r >>/tmp/polybar1.log 2>&1 & disown
 polybar bar2 -r >>/tmp/polybar2.log 2>&1 & disown
-polybar bar3 -r >>/tmp/polybar3.log 2>&1 & disown
-polybar bar4 -r >>/tmp/polybar4.log 2>&1 & disown
+# polybar bar3 -r >>/tmp/polybar3.log 2>&1 & disown
+# polybar bar4 -r >>/tmp/polybar4.log 2>&1 & disown
 echo "Bars launched..."
